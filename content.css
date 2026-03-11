@@ -1,0 +1,22 @@
+/* CSS-based hiding for zero flicker */
+/* These classes are applied to the <html> tag ASAP by the content script */
+
+/* 1. Hide AI Overview box */
+html.ext-hide-ai-overview div[jsname="GZ6pId"],
+html.ext-hide-ai-overview div[jsname="ZLxsqf"],
+html.ext-hide-ai-overview .V35p5c,
+html.ext-hide-ai-overview div[data-query-type="SGE"],
+html.ext-hide-ai-overview div[id^="arc-sge"],
+html.ext-hide-ai-overview .MjjYud:has(div[jsname="GZ6pId"]),
+html.ext-hide-ai-overview .MjjYud:has(div[jsname="cUzNTd"]) {
+	display: none !important;
+}
+
+/* 2. Hide AI Mode tab */
+html.ext-hide-ai-tab a[href*="udm=50"],
+html.ext-hide-ai-tab a[href*="udm=18"],
+html.ext-hide-ai-tab a[href*="udm=7"],
+html.ext-hide-ai-tab div[role="listitem"]:has(a[href*="udm=50"]),
+html.ext-hide-ai-tab div[role="listitem"]:has(span:contains("AI Mode")) {
+	display: none !important;
+}

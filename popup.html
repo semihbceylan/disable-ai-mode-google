@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Google AI Disable Settings</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css">
+	<link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+	<div class="popup-container">
+		<header>
+			<div class="header-title">
+				<img src="icons/icon48.png" alt="Logo" class="logo">
+				<h1>Settings</h1>
+			</div>
+			<div class="header-menu">
+				<i class="fa-solid fa-ellipsis-vertical menu-icon" id="menu-button" title="More options"></i>
+				<div class="dropdown-menu" id="dropdown-menu">
+					<a href="https://www.github.com/semihbceylan/disable-ai-mode-google" target="_blank"
+						class="dropdown-item"><i class="fa-solid fa-bug"></i> Report Bug</a>
+					<a href="https://forms.gle/NYUSpdkM3BWGEWBT7" target="_blank" class="dropdown-item"><i
+							class="fa-solid fa-comment-dots"></i>
+						Feedback</a>
+					<a href="https://ceylanware.com.tr/disable-ai-mode-google" target="_blank" class="dropdown-item"><i
+							class="fa-solid fa-file-contract"></i> Privacy Policy</a>
+					<a href="https://chromewebstore.google.com/detail/disable-ai-mode-ai-overvi/ebefbfhaicjahbdopihcjonaokjjmchp" target="_blank" class="dropdown-item"><i
+							class="fa-solid fa-star"></i> Leave Review</a>
+				</div>
+			</div>
+		</header>
+
+		<div class="content">
+			<div class="setting-item mode-selector">
+				<div class="setting-label-row">
+					<label>AI Mode Tab</label>
+					<div class="info-tooltip">
+						<i class="fa-solid fa-circle-info info-icon"></i>
+						<div class="tooltip-content">
+							<img src="images/ai-mode-info.png" alt="AI Mode Tab demo">
+						</div>
+					</div>
+				</div>
+				<div class="radio-group">
+					<label class="radio-item">
+						<input type="radio" name="ai-mode" value="hide" checked>
+						<span class="radio-label">Hide Completely</span>
+					</label>
+					<label class="radio-item">
+						<input type="radio" name="ai-mode" value="relocate">
+						<span class="radio-label">Move to End</span>
+					</label>
+					<label class="radio-item">
+						<input type="radio" name="ai-mode" value="show">
+						<span class="radio-label">Show Normally</span>
+					</label>
+				</div>
+			</div>
+			<div class="setting-item">
+				<div class="setting-info">
+					<label for="ai-overview-toggle">Disable AI Overview</label>
+				</div>
+				<label class="switch">
+					<input type="checkbox" id="ai-overview-toggle" checked>
+					<span class="slider round"></span>
+				</label>
+			</div>
+
+		</div>
+
+		<footer>
+			<p>Changes apply instantly on refresh.</p>
+		</footer>
+	</div>
+	<script src="popup.js"></script>
+</body>
+
+</html>
