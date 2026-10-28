@@ -1,22 +1,35 @@
 /* CSS-based hiding for zero flicker */
 /* These classes are applied to the <html> tag ASAP by the content script */
+/* ext-ai-mode-page is set while the user is on the AI Mode page itself, so it keeps working */
 
-/* 1. Hide AI Overview box */
-html.ext-hide-ai-overview div[jsname="GZ6pId"],
-html.ext-hide-ai-overview div[jsname="ZLxsqf"],
-html.ext-hide-ai-overview .V35p5c,
-html.ext-hide-ai-overview div[data-query-type="SGE"],
-html.ext-hide-ai-overview div[id^="arc-sge"],
-html.ext-hide-ai-overview .MjjYud:has(div[jsname="GZ6pId"]),
-html.ext-hide-ai-overview .MjjYud:has(div[jsname="cUzNTd"]) {
+/* 1. Hide AI Overview box (including its "Ask anything" follow-up box) */
+html.ext-hide-ai-overview:not(.ext-ai-mode-page) div[jsname="ZLxsqf"],
+html.ext-hide-ai-overview:not(.ext-ai-mode-page) div[jsname="GZ6pId"],
+html.ext-hide-ai-overview:not(.ext-ai-mode-page) div[data-query-type="SGE"],
+html.ext-hide-ai-overview:not(.ext-ai-mode-page) div[id^="arc-sge"],
+html.ext-hide-ai-overview:not(.ext-ai-mode-page) [data-xid="aim-mars-input-plate"],
+html.ext-hide-ai-overview:not(.ext-ai-mode-page) #rcnt > div:has(div[jsname="ZLxsqf"]):not(:has(#search, #fprs)),
+html.ext-hide-ai-overview:not(.ext-ai-mode-page) #rcnt > div > div:has(div[jsname="ZLxsqf"]):not(:has(#search, #fprs)),
+html.ext-hide-ai-overview:not(.ext-ai-mode-page) .MjjYud:has(div[jsname="GZ6pId"]) {
 	display: none !important;
 }
 
 /* 2. Hide AI Mode tab */
-html.ext-hide-ai-tab a[href*="udm=50"],
-html.ext-hide-ai-tab a[href*="udm=18"],
-html.ext-hide-ai-tab a[href*="udm=7"],
-html.ext-hide-ai-tab div[role="listitem"]:has(a[href*="udm=50"]),
-html.ext-hide-ai-tab div[role="listitem"]:has(span:contains("AI Mode")) {
+html.ext-hide-ai-tab [role="navigation"] a[href*="udm=50"],
+html.ext-hide-ai-tab div[role="listitem"]:has(a[href*="udm=50"]) {
+	display: none !important;
+}
+
+/* 3. Hide AI buttons: AI Mode button in the search bar, homepage AI shortcuts, Ask Gemini */
+html.ext-hide-ai-buttons:not(.ext-ai-mode-page) button[jsname="B6rgad"],
+html.ext-hide-ai-buttons div.jLddNe[data-azi]:not(.lsjMhf),
+html.ext-hide-ai-buttons [role="navigation"] a[href*="gemini.google"],
+html.ext-hide-ai-buttons div[role="listitem"]:has(a[href*="gemini.google"]) {
+	display: none !important;
+}
+
+/* 4. Hide People also ask */
+html.ext-hide-paa div[jscontroller="Da4hkd"],
+html.ext-hide-paa .MjjYud:has(div[jscontroller="Da4hkd"]) {
 	display: none !important;
 }
