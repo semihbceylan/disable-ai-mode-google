@@ -1,21 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const aiOverviewToggle = document.getElementById('ai-overview-toggle');
 	const modeRadios = document.getElementsByName('ai-mode');
+	const toggles = {
+		aiOverviewDisabled: document.getElementById('ai-overview-toggle'),
+		aiButtonsHidden: document.getElementById('ai-buttons-toggle'),
+		peopleAlsoAskHidden: document.getElementById('paa-toggle')
+	};
 
 	chrome.storage.sync.get({
 		aiOverviewDisabled: true,
-		mode: 'hide'
+		mode: 'hide',
+		aiButtonsHidden: true,
+		peopleAlsoAskHidden: false
 	}, (items) => {
-		aiOverviewToggle.checked = items.aiOverviewDisabled;
+		for (const [key, toggle] of Object.entries(toggles)) {
+			toggle.checked = items[key];
+		}
 		const selectedRadio = Array.from(modeRadios).find(r => r.value === items.mode);
 		if (selectedRadio) selectedRadio.checked = true;
 	});
 
-	aiOverviewToggle.addEventListener('change', () => {
-		chrome.storage.sync.set({
-			aiOverviewDisabled: aiOverviewToggle.checked
+	for (const [key, toggle] of Object.entries(toggles)) {
+		toggle.addEventListener('change', () => {
+			chrome.storage.sync.set({ [key]: toggle.checked });
 		});
-	});
+	}
 
 	modeRadios.forEach(radio => {
 		radio.addEventListener('change', (e) => {
@@ -28,14 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	const menuButton = document.getElementById('menu-button');
 	const dropdownMenu = document.getElementById('dropdown-menu');
 
+	function setMenuOpen(open) {
+		dropdownMenu.classList.toggle('show', open);
+		menuButton.setAttribute('aria-expanded', String(open));
+	}
+
 	menuButton.addEventListener('click', (e) => {
 		e.stopPropagation();
-		dropdownMenu.classList.toggle('show');
+		setMenuOpen(!dropdownMenu.classList.contains('show'));
 	});
 
-	document.addEventListener('click', () => {
-		if (dropdownMenu.classList.contains('show')) {
-			dropdownMenu.classList.remove('show');
-		}
+	document.addEventListener('click', () => setMenuOpen(false));
+
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') setMenuOpen(false);
 	});
 });

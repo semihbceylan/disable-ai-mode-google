@@ -5,8 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Google AI Disable Settings</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css">
 	<link rel="stylesheet" href="popup.css">
 </head>
 
@@ -18,15 +16,35 @@
 				<h1>Settings</h1>
 			</div>
 			<div class="header-menu">
-				<i class="fa-solid fa-ellipsis-vertical menu-icon" id="menu-button" title="More options"></i>
+				<button type="button" class="menu-icon" id="menu-button" title="More options"
+					aria-label="More options" aria-haspopup="true" aria-expanded="false">
+					<svg viewBox="3 3 18 18" aria-hidden="true">
+						<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+					</svg>
+				</button>
 				<div class="dropdown-menu" id="dropdown-menu">
-					<a href="https://forms.gle/NYUSpdkM3BWGEWBT7" target="_blank" class="dropdown-item"><i
-							class="fa-solid fa-comment-dots"></i>
+					<a href="https://forms.gle/NYUSpdkM3BWGEWBT7" target="_blank" class="dropdown-item">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z" />
+						</svg>
 						Feedback</a>
-					<a href="https://ceylanware.com.tr/disable-ai-mode-google" target="_blank" class="dropdown-item"><i
-							class="fa-solid fa-file-contract"></i> Privacy Policy</a>
-					<a href="https://chromewebstore.google.com/detail/disable-ai-mode-ai-overvi/ebefbfhaicjahbdopihcjonaokjjmchp" target="_blank" class="dropdown-item"><i
-							class="fa-solid fa-star"></i> Leave Review</a>
+					<a href="https://github.com/semihbceylan/disable-ai-mode-google/issues" target="_blank"
+						class="dropdown-item">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z" />
+						</svg>
+						Report Bug</a>
+					<a href="https://ceylanware.com.tr/disable-ai-mode-google" target="_blank" class="dropdown-item">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+						</svg>
+						Privacy Policy</a>
+					<a href="https://chromewebstore.google.com/detail/disable-ai-mode-ai-overvi/ebefbfhaicjahbdopihcjonaokjjmchp"
+						target="_blank" class="dropdown-item">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+						</svg>
+						Leave Review</a>
 				</div>
 			</div>
 		</header>
@@ -36,7 +54,9 @@
 				<div class="setting-label-row">
 					<label>AI Mode Tab</label>
 					<div class="info-tooltip">
-						<i class="fa-solid fa-circle-info info-icon"></i>
+						<svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+						</svg>
 						<div class="tooltip-content">
 							<img src="images/ai-mode-info.png" alt="AI Mode Tab demo">
 						</div>
@@ -66,11 +86,30 @@
 					<span class="slider round"></span>
 				</label>
 			</div>
+			<div class="setting-item">
+				<div class="setting-info">
+					<label for="ai-buttons-toggle">Hide AI Buttons</label>
+					<p>Search bar, homepage &amp; Ask Gemini</p>
+				</div>
+				<label class="switch">
+					<input type="checkbox" id="ai-buttons-toggle" checked>
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class="setting-item">
+				<div class="setting-info">
+					<label for="paa-toggle">Hide "People also ask"</label>
+				</div>
+				<label class="switch">
+					<input type="checkbox" id="paa-toggle">
+					<span class="slider round"></span>
+				</label>
+			</div>
 
 		</div>
 
 		<footer>
-			<p>Changes apply instantly on refresh.</p>
+			<p>Changes apply instantly to open Google tabs.</p>
 		</footer>
 	</div>
 	<script src="popup.js"></script>
