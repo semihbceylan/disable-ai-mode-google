@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "Disable AI Mode & AI Overview",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "Remove AI Mode and AI Overview from Google Search.",
 	"author": "CeylanWare",
 	"homepage_url": "https://github.com/semihbceylan/disable-ai-mode-google",
