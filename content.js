@@ -62,14 +62,27 @@
 		});
 	}
 
+	// Google sets its own inline display on some wrappers (e.g. display:contents on the
+	// results grid wrapper), so remember it and put it back instead of just removing ours
+	const savedDisplay = new WeakMap();
+
 	function hideElement(el, key) {
+		if (!el.dataset[key]) {
+			savedDisplay.set(el, [el.style.getPropertyValue('display'), el.style.getPropertyPriority('display')]);
+		}
 		el.style.setProperty('display', 'none', 'important');
 		el.dataset[key] = 'true';
 	}
 
 	function restoreElement(el, key) {
 		if (el.dataset[key]) {
-			el.style.removeProperty('display');
+			const [value, priority] = savedDisplay.get(el) || ['', ''];
+			if (value) {
+				el.style.setProperty('display', value, priority);
+			} else {
+				el.style.removeProperty('display');
+			}
+			savedDisplay.delete(el);
 			delete el.dataset[key];
 		}
 	}
@@ -157,6 +170,10 @@
 					}
 				}
 			}
+		} else if (firstDiv && firstDiv.querySelector('#search')) {
+			// Google streams the AI Overview before the results: if an earlier pass hid
+			// the wrapper before #search arrived, show it again now that the results are in
+			restoreElement(firstDiv, 'extHidden');
 		}
 	}
 
