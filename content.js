@@ -66,7 +66,16 @@
 	// results grid wrapper), so remember it and put it back instead of just removing ours
 	const savedDisplay = new WeakMap();
 
+	// Never hide anything that holds the actual search results
+	function containsResults(el) {
+		return !!el.querySelector('#search, #rso, #botstuff');
+	}
+
 	function hideElement(el, key) {
+		if (containsResults(el)) {
+			restoreElement(el, key);
+			return;
+		}
 		if (!el.dataset[key]) {
 			savedDisplay.set(el, [el.style.getPropertyValue('display'), el.style.getPropertyPriority('display')]);
 		}
@@ -148,7 +157,7 @@
 		document.querySelectorAll(AI_OVERVIEW_SELECTORS).forEach(el => {
 			// .MjjYud is usually a safe result block container.
 			const parent = el.closest('.MjjYud');
-			if (parent && !parent.querySelector('#rso, #search') && !parent.textContent.includes("Search Results")) {
+			if (parent && !containsResults(parent)) {
 				hideElement(parent, 'extHidden');
 			} else {
 				hideElement(el, 'extHidden');
